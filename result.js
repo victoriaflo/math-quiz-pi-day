@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // 🏠 Retour accueil
     homeBtn.addEventListener("click", function() {
-        window.location.href = "index.html";
+        window.location.href = "quiz.html";
     });
 
 });
