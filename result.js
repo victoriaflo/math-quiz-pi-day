@@ -4,20 +4,10 @@ document.addEventListener("DOMContentLoaded", function() {
     const whatsappBtn = document.getElementById("whatsapp-btn");
     const copyBtn = document.getElementById("copy-btn");
     const homeBtn = document.getElementById("home-btn");
-
-    const finalScore = localStorage.getItem("finalScore");
     const retryBtn = document.getElementById("retry-btn");
 
-retryBtn.addEventListener("click", function(){
+    const finalScore = localStorage.getItem("finalScore");
 
-localStorage.removeItem("finalScore");
-
-window.location.href = "quiz.html";
-
-});
-
-
-    // 🔎 Vérification si score existe
     if (finalScore === null) {
         finalScoreEl.textContent = "Aucun résultat trouvé.";
         return;
@@ -25,37 +15,57 @@ window.location.href = "quiz.html";
 
     finalScoreEl.textContent = "Tu as obtenu " + finalScore + " / 5 🎯";
 
-    // 🌐 Lien du jeu
+    // 🔗 IMPORTANT : ton vrai lien
     const siteURL = "https://victoriaflo.github.io/math-quiz-pi-day/";
 
-    // 🧠 Message partage amélioré
-    const message = "🧠 Math Quiz Pi Day\n\nScore : " 
-    + finalScore + "/5 🎯\n\nTeste tes connaissances ici 👇\n" 
-    + siteURL;
+    const message =
+    "🧠 Math Quiz Pi Day\n\n" +
+    "Score : " + finalScore + "/5 🎯\n\n" +
+    "Teste tes connaissances ici 👇\n" +
+    siteURL;
 
-    // 📲 WhatsApp
-    whatsappBtn.addEventListener("click", function() {
+    // WhatsApp
+    if(whatsappBtn){
+        whatsappBtn.addEventListener("click", function(){
 
-        const url = "https://wa.me/?text=" + encodeURIComponent(message);
+            const shareURL =
+            "https://wa.me/?text=" +
+            encodeURIComponent(message);
 
-        window.open(url, "_blank");
+            window.open(shareURL,"_blank");
 
-    });
+        });
+    }
 
-    // 📸 Copier message complet
-    copyBtn.addEventListener("click", function() {
+    // Copier
+    if(copyBtn){
+        copyBtn.addEventListener("click", function(){
 
-        navigator.clipboard.writeText(message);
+            navigator.clipboard.writeText(message);
 
-        alert("Résultat copié ! Tu peux maintenant le partager 📲");
+            alert("Lien copié ! Partage maintenant 📲");
 
-    });
+        });
+    }
 
-    // 🏠 Retour accueil FIX
-    homeBtn.addEventListener("click", function() {
+    // Accueil
+    if(homeBtn){
+        homeBtn.addEventListener("click", function(){
 
-        window.location.href = "index.html";
+            window.location.href="index.html";
 
-    });
+        });
+    }
+
+    // Recommencer FIX
+    if(retryBtn){
+        retryBtn.addEventListener("click", function(){
+
+            localStorage.removeItem("finalScore");
+
+            window.location.href="quiz.html";
+
+        });
+    }
 
 });
