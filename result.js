@@ -13,25 +13,39 @@ document.addEventListener("DOMContentLoaded", function() {
         return;
     }
 
-    finalScoreEl.textContent = "Tu as obtenu " + finalScore + " / 5 ";
+    finalScoreEl.textContent = "Tu as obtenu " + finalScore + " / 5 🎯";
 
-    const message = "J'ai obtenu " + finalScore + "/5 au Quiz Maths ";
+    // 🌐 Lien du jeu
+    const siteURL = "https://victoriaflo.github.io/math-quiz-pi-day/";
+
+    // 🧠 Message partage amélioré
+    const message = "🧠 Math Quiz Pi Day\n\nScore : " 
+    + finalScore + "/5 🎯\n\nTeste tes connaissances ici 👇\n" 
+    + siteURL;
 
     // 📲 WhatsApp
     whatsappBtn.addEventListener("click", function() {
+
         const url = "https://wa.me/?text=" + encodeURIComponent(message);
+
         window.open(url, "_blank");
+
     });
 
-    // 📸 Instagram (copie texte)
+    // 📸 Copier message complet
     copyBtn.addEventListener("click", function() {
+
         navigator.clipboard.writeText(message);
-        alert("Résultat copié ! Tu peux le coller sur Instagram ");
+
+        alert("Résultat copié ! Tu peux maintenant le partager 📲");
+
     });
 
-    // 🏠 Retour accueil
+    // 🏠 Retour accueil FIX
     homeBtn.addEventListener("click", function() {
-        window.location.href = "result.html";
+
+        window.location.href = "index.html";
+
     });
 
 });
