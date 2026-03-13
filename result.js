@@ -6,6 +6,16 @@ document.addEventListener("DOMContentLoaded", function() {
     const homeBtn = document.getElementById("home-btn");
 
     const finalScore = localStorage.getItem("finalScore");
+    const retryBtn = document.getElementById("retry-btn");
+
+retryBtn.addEventListener("click", function(){
+
+localStorage.removeItem("finalScore");
+
+window.location.href = "quiz.html";
+
+});
+
 
     // 🔎 Vérification si score existe
     if (finalScore === null) {
