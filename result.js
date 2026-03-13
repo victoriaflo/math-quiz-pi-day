@@ -1,71 +1,55 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded",function(){
 
-    const finalScoreEl = document.getElementById("final-score");
-    const whatsappBtn = document.getElementById("whatsapp-btn");
-    const copyBtn = document.getElementById("copy-btn");
-    const homeBtn = document.getElementById("home-btn");
-    const retryBtn = document.getElementById("retry-btn");
+const score=localStorage.getItem("finalScore");
 
-    const finalScore = localStorage.getItem("finalScore");
+const scoreText=document.getElementById("final-score");
 
-    if (finalScore === null) {
-        finalScoreEl.textContent = "Aucun résultat trouvé.";
-        return;
-    }
+const retry=document.getElementById("retry-btn");
 
-    finalScoreEl.textContent = "Tu as obtenu " + finalScore + " / 5 🎯";
+const home=document.getElementById("home-btn");
 
-    // 🔗 IMPORTANT : ton vrai lien
-    const siteURL = "https://victoriaflo.github.io/math-quiz-pi-day/";
+const whatsapp=document.getElementById("whatsapp-btn");
 
-    const message =
-    "🧠 Math Quiz Pi Day\n\n" +
-    "Score : " + finalScore + "/5 🎯\n\n" +
-    "Teste tes connaissances ici 👇\n" +
-    siteURL;
+const copy=document.getElementById("copy-btn");
 
-    // WhatsApp
-    if(whatsappBtn){
-        whatsappBtn.addEventListener("click", function(){
+const url="https://victoriaflo.github.io/math-quiz-pi-day/";
 
-            const shareURL =
-            "https://wa.me/?text=" +
-            encodeURIComponent(message);
+scoreText.textContent="Score : "+score+"/5 🎯";
 
-            window.open(shareURL,"_blank");
+let message=
+"🧠 Math Quiz Pi Day\n\n"+
+"Score : "+score+"/5 🎯\n\n"+
+"Essaie aussi 👇\n"+
+url;
 
-        });
-    }
+retry.onclick=function(){
 
-    // Copier
-    if(copyBtn){
-        copyBtn.addEventListener("click", function(){
+localStorage.removeItem("finalScore");
 
-            navigator.clipboard.writeText(message);
+window.location.href="quiz.html";
 
-            alert("Lien copié ! Partage maintenant 📲");
+}
 
-        });
-    }
+home.onclick=function(){
 
-    // Accueil
-    if(homeBtn){
-        homeBtn.addEventListener("click", function(){
+window.location.href="index.html";
 
-            window.location.href="index.html";
+}
 
-        });
-    }
+whatsapp.onclick=function(){
 
-    // Recommencer FIX
-    if(retryBtn){
-        retryBtn.addEventListener("click", function(){
+window.open(
+"https://wa.me/?text="+encodeURIComponent(message)
+);
 
-            localStorage.removeItem("finalScore");
+}
 
-            window.location.href="quiz.html";
+copy.onclick=function(){
 
-        });
-    }
+navigator.clipboard.writeText(message);
+
+alert("Lien copié 📲");
+
+}
 
 });
