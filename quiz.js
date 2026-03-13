@@ -1,83 +1,99 @@
 const questions = [
-    {
-        question: "Qui est appelé le père de la géométrie ?",
-        answers: ["Newton", "Euclide", "Einstein", "Galilée"],
-        correct: 1
-    },
-    {
-        question: "Le théorème de Pythagore s’applique à quel triangle ?",
-        answers: ["Équilatéral", "Isocèle", "Rectangle", "Scalène"],
-        correct: 2
-    },
-    {
-        question: "Le nombre π est utilisé pour calculer :",
-        answers: ["Volumes cubes", "Cercles", "Angles", "Racines"],
-        correct: 1
-    },
-    {
-        question: "Notre système de numération vient de :",
-        answers: ["Grèce", "Rome", "Inde", "Égypte"],
-        correct: 2
-    },
-    {
-        question: "Combien font 3² + 4² ?",
-        answers: ["12", "25", "7", "49"],
-        correct: 1
-    }
+
+{
+question:"Quelle est la valeur de Pi (approx)?",
+answers:["3.12","3.14","3.18"],
+correct:1
+},
+
+{
+question:"Combien font 5×5 ?",
+answers:["10","25","30"],
+correct:1
+},
+
+{
+question:"Racine de 9 ?",
+answers:["3","6","9"],
+correct:0
+},
+
+{
+question:"10/2 ?",
+answers:["2","5","8"],
+correct:1
+},
+
+{
+question:"7+3 ?",
+answers:["9","10","11"],
+correct:1
+}
+
 ];
 
-let currentQuestion = 0;
-let score = 0;
+let index=0;
 
-const questionEl = document.getElementById("question");
-const answersEl = document.getElementById("answers");
-const nextBtn = document.getElementById("next-btn");
+let score=0;
 
-showQuestion();
+const questionEl=document.getElementById("question");
 
-function showQuestion() {
-    nextBtn.style.display = "none";
-    const q = questions[currentQuestion];
-    questionEl.textContent = q.question;
-    answersEl.innerHTML = "";
+const answersEl=document.getElementById("answers");
 
-    q.answers.forEach((answer, index) => {
-        const button = document.createElement("button");
-        button.textContent = answer;
+const nextBtn=document.getElementById("next-btn");
 
-        button.addEventListener("click", function() {
-            selectAnswer(button, index);
-        });
+function loadQuestion(){
 
-        answersEl.appendChild(button);
-    });
+let q=questions[index];
+
+questionEl.textContent=q.question;
+
+answersEl.innerHTML="";
+
+q.answers.forEach((answer,i)=>{
+
+let btn=document.createElement("button");
+
+btn.textContent=answer;
+
+btn.onclick=function(){
+
+if(i===q.correct){
+
+score++;
+
 }
 
-function selectAnswer(button, index) {
-    const correctIndex = questions[currentQuestion].correct;
-    const buttons = answersEl.querySelectorAll("button");
+nextBtn.style.display="block";
 
-    // Désactiver tous les boutons
-    buttons.forEach(btn => btn.disabled = true);
-
-    if (index === correctIndex) {
-        button.classList.add("correct");
-        score++;
-    } else {
-        button.classList.add("wrong");
-        buttons[correctIndex].classList.add("correct");
-    }
-
-    nextBtn.style.display = "block";
 }
 
-nextBtn.addEventListener("click", function() {
-    currentQuestion++;
+answersEl.appendChild(btn);
 
-    if (currentQuestion < questions.length) {
-        showQuestion();
-    } else {
-        localStorage.setItem("finalScore", score);
-        window.location.href = "result.html";
-    }
 });
+
+nextBtn.style.display="none";
+
+}
+
+nextBtn.onclick=function(){
+
+index++;
+
+if(index<questions.length){
+
+loadQuestion();
+
+}
+
+else{
+
+localStorage.setItem("finalScore",score);
+
+window.location.href="result.html";
+
+}
+
+}
+
+loadQuestion();
