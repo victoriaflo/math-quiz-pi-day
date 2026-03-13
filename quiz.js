@@ -1,20 +1,20 @@
 const questions = [
 
 {
-question:"Quelle est la valeur de Pi (approx)?",
-answers:["3.12","3.14","3.18"],
+question:"π est un nombre infini, mais jusqu’à aujourd’hui, combien de chiffres après la virgule ont été calculés par les ordinateurs?",
+answers:["100 000 000 000 000 (100 trillions),"300 000 000 000 000 (300 trillions)","500 000 000 000 000 (500 trillions)"],
 correct:1
 },
 
 {
-question:"Combien font 5×5 ?",
-answers:["10","25","30"],
+question:"Calcule : (10 – 2) × 3² ÷ 6",
+answers:["15","12","9"],
 correct:1
 },
 
 {
-question:"Racine de 9 ?",
-answers:["3","6","9"],
+question:"Calcule : √16 + √9 × 2 ?",
+answers:["10","14","9"],
 correct:0
 },
 
@@ -25,8 +25,8 @@ correct:1
 },
 
 {
-question:"7+3 ?",
-answers:["9","10","11"],
+question:"Ton père gagne 2000 gourdes par mois, ta mère 3 fois plus et ton frère 50 % de ce que gagne ton père. Combien gagnent-ils tous ensemble par mois?",
+answers:["7500","9500","8000"],
 correct:1
 }
 
