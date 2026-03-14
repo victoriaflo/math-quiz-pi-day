@@ -24,9 +24,9 @@ scoreText.textContent="Score : "+score+"/5 🎯";
 
 // Message partage
 let message =
-"🧠 Math Quiz Pi Day\n\n"+
-"J'ai obtenu "+score+"/5 🎯\n\n"+
-"Teste toi aussi 👇\n"+
+" Math Quiz Pi Day\n\n"+
+"J'ai obtenu "+score+"/5 \n\n"+
+"Teste toi aussi \n"+
 url;
 
 // WhatsApp share
