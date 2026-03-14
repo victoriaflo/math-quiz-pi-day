@@ -4,9 +4,9 @@ const score=localStorage.getItem("finalScore");
 
 const scoreText=document.getElementById("final-score");
 
-const retry=document.getElementById("retry-btn");
 
-const home=document.getElementById("home-btn");
+
+
 
 const whatsapp=document.getElementById("whatsapp-btn");
 
