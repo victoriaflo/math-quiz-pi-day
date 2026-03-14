@@ -45,7 +45,7 @@ copy.addEventListener("click", function(){
 
 navigator.clipboard.writeText(message);
 
-alert("Lien copié ! Partage maintenant 📲");
+alert("Lien copié ! Partager maintenant ");
 
 });
 
