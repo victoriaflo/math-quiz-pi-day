@@ -14,12 +14,12 @@ const copy=document.getElementById("copy-btn");
 
 const url="https://victoriaflo.github.io/math-quiz-pi-day/";
 
-scoreText.textContent="Score : "+score+"/5 🎯";
+scoreText.textContent="Score : "+score+"/5 ";
 
 let message=
-"🧠 Math Quiz Pi Day\n\n"+
-"Score : "+score+"/5 🎯\n\n"+
-"Essaie aussi 👇\n"+
+"Math Quiz Pi Day\n\n"+
+"Score : "+score+"/5 \n\n"+
+"Essaie aussi\n"+
 url;
 
 retry.onclick=function(){
